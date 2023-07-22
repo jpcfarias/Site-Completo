@@ -44,7 +44,7 @@ public class GreetingsController {
 	@GetMapping(value = "listausuarios")
 	@ResponseBody
 	public ResponseEntity<List<Usuario>> listaUsuarios(){
-		List<Usuario> usuarios = usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+		List<Usuario> usuarios = usuarioRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 	}
 
@@ -88,7 +88,7 @@ public class GreetingsController {
 
 	@GetMapping(value = "consultar")
 	@ResponseBody
-	public ResponseEntity<List<Usuario>> buscarNome(@RequestParam(name = "nome") String nome){
+	public ResponseEntity<List<Usuario>> buscarNome(@RequestParam String nome){
 		
 		List<Usuario> usuarios = usuarioRepository.buscarNome(nome.trim().toUpperCase());
 
